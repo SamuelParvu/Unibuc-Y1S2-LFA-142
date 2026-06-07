@@ -1,0 +1,42 @@
+
+
+# reserved patterns
+# # , -> NULL ANY |
+# STATES ALPHABET START FINISH
+
+
+# NULL means epsilon
+# q0,a -> q1 | q2 # gets transformed into
+# q0,a -> q1
+# q0,a -> q2
+# q0,a -> q1 | q2 gets transformed into
+
+# q1,ANY -> q2 # gets transformed into
+# q1,a -> q2
+# q1,b -> q2
+# q1,c -> q2
+# q1,d ...
+
+STATES: q0, q1, q2, q3
+ALPHABET: a,b,c
+START: q0
+FINISH: q1, q2, q3
+
+
+# STATES
+
+TRANSITIONS:
+q0,a -> q1
+q0,b -> q0
+q0,NULL -> q0
+
+# other options
+# q0,a -> q1|q2|q3
+# q0,ANY -> q1|q2|q3
+
+
+# NFAs have this cool property where you don't need to overspecify them
+# you don't necessaraly need a special fail condition
+# that always loops back into itself
+# you only need a state to go nowhere and it fails automatically
+# but this does add another thingy, you are allowed to go nowhere in a nfa 

@@ -1,0 +1,19 @@
+# DFA SCRIPT!
+# accepts even lenght words
+
+alphabet:
+  - 0
+  - 1
+states:
+  - q_0
+  - q_1
+initial_state: q_0
+final_states:
+  - q_0
+transitions:
+  q_0:
+    '0': q_1
+    '1': q_1
+  q_1:
+    '0': q_0
+    '1': q_0

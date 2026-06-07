@@ -1,0 +1,65 @@
+# DFA SCRIPT!
+
+alphabet:
+  - n
+  - s
+  - e
+  - w
+  - pick
+states:
+  - Start
+
+  - Entrance-NO_Potion
+  - Lab-NO_Potion
+  - Library-NO_Potion
+  - Workshop-NO_Potion
+  - Garden-NO_Potion
+  - Hell-NO_Potion
+  
+  - Entrance-Potion
+  - Lab-Potion
+  - Library-Potion
+  - Workshop-Potion
+  - Garden-Potion
+  - Goal-Potion
+
+initial_state: Start
+final_states:
+  - Goal-Potion
+transitions:
+  Start:
+    w: Entrance-NO_Potion
+  Entrance-NO_Potion:
+    n: Library-NO_Potion
+    w: Lab-NO_Potion
+  Lab-NO_Potion:
+    e: Entrance-NO_Potion
+    pick: Lab-Potion
+  Library-NO_Potion:
+    w: Workshop-NO_Potion
+    s: Entrance-NO_Potion
+  Workshop-NO_Potion:
+    n: Garden-NO_Potion
+    e: Library-NO_Potion
+  Garden-NO_Potion:
+    s: Workshop-NO_Potion
+    w: Hell-NO_Potion
+
+    
+  Entrance-Potion:
+    n: Library-Potion
+    w: Lab-Potion
+  Lab-Potion:
+    e: Entrance-Potion
+  Library-Potion:
+    w: Workshop-Potion
+    s: Entrance-Potion
+  Workshop-Potion:
+    n: Garden-Potion
+    e: Library-Potion
+  Garden-Potion:
+    s: Workshop-Potion
+    w: Goal-Potion
+
+
+

@@ -1,0 +1,49 @@
+# NFA SCRIPT!
+
+EPSILON: _
+
+alphabet: [a,b,c,d]
+states:
+  - START
+
+  - search_aba
+  - found_a
+  - found_ab
+  - found_aba
+  
+  - search_cd
+  - found_c
+  - found_cd
+initial_state: Start
+final_states: [found_aba, found_cd]
+transitions:
+  Start:
+    a: [Start]
+    b: [Start]
+    c: [Start]
+    d: [Start]
+    _: [search_aba, search_cd]
+  
+  search_aba:
+    a: [found_a]
+  found_a:
+    b: [found_ab]
+  found_ab:
+    a: [found_aba]
+  found_aba:
+    a: [found_aba]
+    b: [found_aba]
+    c: [found_aba]
+    d: [found_aba]
+  
+  search_cd:
+    c: [found_c]
+  found_c:
+    d: [found_cd]
+  found_cd:
+    a: [found_cd]
+    b: [found_cd]
+    c: [found_cd]
+    d: [found_cd]
+
+  

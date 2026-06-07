@@ -1,0 +1,101 @@
+# DFA SCRIPT!
+
+alphabet:
+  - n
+  - s
+  - e
+  - w
+  - pick
+
+states:
+  - Start
+
+  - Entrance-NO_Potion-NO_key
+  - Lab-NO_Potion-NO_key
+  - Library-NO_Potion-NO_key
+  - Workshop-NO_Potion-NO_key
+  - Garden-NO_Potion-NO_key
+  # - Hell-NO_Potion-NO_key
+
+  
+  - Entrance-NO_Potion-YES_key
+  - Lab-NO_Potion-YES_key
+  - Library-NO_Potion-YES_key
+  - Workshop-NO_Potion-YES_key
+  - Garden-NO_Potion-YES_key
+  # - Hell-NO_Potion-YES_key
+
+  # can't be in a state where i have the potion but i don't have the key
+  
+  - Entrance-Potion
+  - Lab-Potion
+  - Library-Potion
+  - Workshop-Potion
+  - Garden-Potion
+
+  - Goal-Potion
+  - Hell-NO_Potion
+
+
+initial_state: Start
+
+final_states:
+  - Goal-Potion
+
+transitions:
+  # NO Potion and NO key
+  Start:
+    w: Entrance-NO_Potion-NO_key
+  Entrance-NO_Potion-NO_key:
+    n: Library-NO_Potion-NO_key
+    w: Lab-NO_Potion-NO_key
+  Lab-NO_Potion-NO_key:
+    e: Entrance-NO_Potion-NO_key
+    # pick: Lab-Potion
+  Library-NO_Potion-NO_key:
+    w: Workshop-NO_Potion-NO_key
+    s: Entrance-NO_Potion-NO_key
+    pick: Library-NO_Potion-YES_key
+  Workshop-NO_Potion-NO_key:
+    n: Garden-NO_Potion-NO_key
+    e: Library-NO_Potion-NO_key
+  Garden-NO_Potion-NO_key:
+    s: Workshop-NO_Potion-NO_key
+    w: Hell-NO_Potion
+
+    
+  # NO Potion and YES key
+  Entrance-NO_Potion-YES_key:
+    n: Library-NO_Potion-YES_key
+    w: Lab-NO_Potion-YES_key
+  Lab-NO_Potion-YES_key:
+    e: Entrance-NO_Potion-YES_key
+    pick: Lab-Potion
+  Library-NO_Potion-YES_key:
+    w: Workshop-NO_Potion-YES_key
+    s: Entrance-NO_Potion-YES_key
+  Workshop-NO_Potion-YES_key:
+    n: Garden-NO_Potion-YES_key
+    e: Library-NO_Potion-YES_key
+  Garden-NO_Potion-YES_key:
+    s: Workshop-NO_Potion-YES_key
+    w: Hell-NO_Potion
+
+    
+  Entrance-Potion:
+    n: Library-Potion
+    w: Lab-Potion
+  Lab-Potion:
+    e: Entrance-Potion
+  Library-Potion:
+    w: Workshop-Potion
+    s: Entrance-Potion
+  Workshop-Potion:
+    n: Garden-Potion
+    e: Library-Potion
+  Garden-Potion:
+    s: Workshop-Potion
+    w: Goal-Potion
+
+
+

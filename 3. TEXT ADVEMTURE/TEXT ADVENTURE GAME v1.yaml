@@ -1,0 +1,36 @@
+# DFA SCRIPT!
+
+alphabet:
+  - n
+  - s
+  - e
+  - w
+states:
+  - Start
+  - Entrance
+  - Lab
+  - Library
+  - Workshop
+  - Garden
+  - Goal
+initial_state: Start
+final_states:
+  - Goal
+transitions:
+  Start:
+    w: Entrance
+  Entrance:
+    n: Library
+    w: Lab
+  Lab:
+    e: Entrance
+  Library:
+    w: Workshop
+    s: Entrance
+  Workshop:
+    n: Garden
+    e: Library
+  Garden:
+    s: Workshop
+    w: Goal
+

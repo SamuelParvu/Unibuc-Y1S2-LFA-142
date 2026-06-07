@@ -1,0 +1,6 @@
+variable_list: [S]
+terminal_list: ["[","]"]
+variable_start: S
+rule_list: 
+  - [S , "[S]S"]
+  - [S , ""]

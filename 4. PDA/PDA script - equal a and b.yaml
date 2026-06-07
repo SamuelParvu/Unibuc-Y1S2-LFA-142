@@ -1,0 +1,22 @@
+
+EPSILON: _
+
+input_alphabet: [a,b]
+stack_alphabet: [a,b,$A,]
+states: [Start, count_a, count_b, Goal]
+initial_state: Start
+final_states: [Goal]
+transitions:
+  Start:
+    a:
+      _: [count_a, $A]
+  count_a:
+    a:
+      _: [count_a, a]
+    b:
+      a: [count_b, _]
+      $A: [Goal, _]
+  count_b:
+    b:
+      a: [count_b, _]
+      $A: [Goal, _]
